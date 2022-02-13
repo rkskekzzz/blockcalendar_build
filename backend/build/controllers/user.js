@@ -17,7 +17,8 @@ function create(req, res) {
         const calendar_id = req.params.calendar_id;
         const createUserDTO = req.body;
         const calendar = yield services_1.UserService.create(calendar_id, createUserDTO);
-        return res.status(200).json(calendar);
+        const newUser = calendar.users[calendar.users.length - 1];
+        return res.status(200).json(newUser);
     });
 }
 function remove(req, res) {

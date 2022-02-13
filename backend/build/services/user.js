@@ -19,8 +19,7 @@ function create(calendar_id, createUserDTO) {
     return __awaiter(this, void 0, void 0, function* () {
         const calendar = yield calendar_1.CalendarService.getOneDocument(calendar_id);
         calendar.users.push(createUserDTO);
-        yield calendar.save();
-        return calendar.users[calendar.users.length - 1];
+        return calendar.save();
     });
 }
 function findIndexOrFail(calendar, user_id) {

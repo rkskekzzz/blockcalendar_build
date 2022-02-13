@@ -17,8 +17,8 @@ function update(req, res) {
         const calendar_id = req.params.calendar_id;
         const user_id = req.params.user_id;
         const updateSchduleDTO = req.body;
-        const calendar = yield services_1.ScheduleService.update(calendar_id, user_id, updateSchduleDTO);
-        return res.status(200).json(calendar);
+        yield services_1.ScheduleService.update(calendar_id, user_id, updateSchduleDTO);
+        return res.sendStatus(200);
     });
 }
 exports.ScheduleController = {

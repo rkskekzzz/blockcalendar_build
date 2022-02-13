@@ -11,11 +11,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CalendarController = void 0;
 const services_1 = require("../services");
+const sample_1 = require("../db/sample");
 require("express-async-errors");
 function create(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const createCalendarDTO = req.body;
-        const calendar = yield services_1.CalendarService.create(createCalendarDTO);
+        let calendar = yield services_1.CalendarService.create(createCalendarDTO);
+        if (calendar && calendar._id) {
+            calendar = yield services_1.UserService.create(calendar._id, sample_1.sampleUser);
+        }
         return res.status(200).json(calendar);
     });
 }
