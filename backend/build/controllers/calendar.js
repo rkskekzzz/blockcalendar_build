@@ -26,16 +26,7 @@ function getOne(req, res) {
         return res.status(200).json(calendar);
     });
 }
-function update(req, res) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const calendar_id = req.params.calendar_id;
-        const updateCalendarDTO = req.body;
-        const calendar = yield services_1.CalendarService.update(calendar_id, updateCalendarDTO);
-        return res.status(200).json(calendar);
-    });
-}
 exports.CalendarController = {
     create,
     getOne,
-    update,
 };

@@ -7,12 +7,6 @@ const schema = new mongoose_1.Schema({
         type: String,
         required: true,
     },
-    type: {
-        type: String,
-        required: true,
-        enum: entity_1.CalendarType,
-        default: entity_1.CalendarType.MONTHLY,
-    },
     start: { type: String, required: false },
     end: { type: String, required: false },
     users: [

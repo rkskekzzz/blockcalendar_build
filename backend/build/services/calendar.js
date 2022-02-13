@@ -34,15 +34,8 @@ function getOne(calendar_id) {
         return getOneDocument(calendar_id);
     });
 }
-function update(calendar_id, updateCalendarDTO) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const calendar = yield getOneDocument(calendar_id);
-        return calendar.update(Object.assign({}, updateCalendarDTO));
-    });
-}
 exports.CalendarService = {
     create,
     getOne,
     getOneDocument,
-    update,
 };

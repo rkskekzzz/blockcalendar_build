@@ -18,18 +18,12 @@ const calendar_1 = require("./calendar");
 function create(calendar_id, createUserDTO) {
     return __awaiter(this, void 0, void 0, function* () {
         const calendar = yield calendar_1.CalendarService.getOneDocument(calendar_id);
-        const user = Object.assign({ schedules: [] }, createUserDTO);
-        calendar.users.push(user);
+        calendar.users.push(createUserDTO);
         yield calendar.save();
         return calendar.users[calendar.users.length - 1];
     });
 }
-function getAll(calendar_id) {
-    return __awaiter(this, void 0, void 0, function* () {
-        return yield calendar_1.CalendarService.getOne(calendar_id).then((calendar) => calendar.users);
-    });
-}
-function getIndexOrFail(calendar, user_id) {
+function findIndexOrFail(calendar, user_id) {
     const index = calendar.users.findIndex((user) => {
         const parseId = JSON.stringify(user._id).replace(/"/g, '');
         return parseId === user_id;
@@ -39,28 +33,16 @@ function getIndexOrFail(calendar, user_id) {
     }
     return index;
 }
-function update(calendar_id, user_id, updateUserDTO) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const calendar = yield calendar_1.CalendarService.getOneDocument(calendar_id);
-        const index = getIndexOrFail(calendar, user_id);
-        const user = calendar.users[index];
-        calendar.users[index] = Object.assign(Object.assign({}, user), updateUserDTO);
-        return calendar.save();
-    });
-}
 function remove(calendar_id, user_id) {
     return __awaiter(this, void 0, void 0, function* () {
         const calendar = yield calendar_1.CalendarService.getOneDocument(calendar_id);
-        const user_index = getIndexOrFail(calendar, user_id);
-        console.log('hi : ', user_index);
+        const user_index = findIndexOrFail(calendar, user_id);
         calendar.users = calendar.users.filter((_, index) => index !== user_index);
         return calendar.save();
     });
 }
 exports.UserService = {
     create,
-    getAll,
-    getIndexOrFail,
-    update,
+    findIndexOrFail,
     remove,
 };

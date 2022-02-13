@@ -20,22 +20,6 @@ function create(req, res) {
         return res.status(200).json(calendar);
     });
 }
-function update(req, res) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const calendar_id = req.params.calendar_id;
-        const user_id = req.params.user_id;
-        const updateUserDTO = req.body;
-        const calendar = yield services_1.UserService.update(calendar_id, user_id, updateUserDTO);
-        return res.status(200).json(calendar);
-    });
-}
-function getAll(req, res) {
-    return __awaiter(this, void 0, void 0, function* () {
-        const calendar_id = req.params.calendar_id;
-        const users = yield services_1.UserService.getAll(calendar_id);
-        return res.status(200).json(users);
-    });
-}
 function remove(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const calendar_id = req.params.calendar_id;
@@ -46,7 +30,5 @@ function remove(req, res) {
 }
 exports.UserController = {
     create,
-    getAll,
-    update,
     remove,
 };
