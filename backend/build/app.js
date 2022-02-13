@@ -37,11 +37,13 @@ app.use(express_1.default.urlencoded({ extended: false }));
 app.use("/calendar", routes_1.default);
 app.use(error.errorPageNotFound);
 app.use(error.errorHandler);
-(0, connent_1.mongooseConnect)();
-app.listen(config_1.default.host.port, () => {
-    console.log(`
-  ################################################
-  🛡️  Server listening on port: ${config_1.default.host.port}🛡️
-  ################################################
-`);
+(0, connent_1.mongooseConnect)().then(() => {
+    console.log(`DB connected!`);
+    app.listen(config_1.default.host.port, () => {
+        console.log(`
+      ################################################
+      🛡️  Server listening on port: ${config_1.default.host.port}🛡️
+      ################################################
+    `);
+    });
 });
