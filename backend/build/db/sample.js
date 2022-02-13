@@ -4,7 +4,7 @@ exports.sampleUser = void 0;
 const entity_1 = require("../interface/entity");
 function getDay(offsetFromToday) {
     const curr = new Date();
-    const day = new Date(curr.getFullYear(), curr.getMonth() + 1, curr.getDate() + offsetFromToday, 24);
+    const day = new Date(curr.getFullYear(), curr.getMonth(), curr.getDate() + offsetFromToday, 24);
     return day.toISOString();
 }
 exports.sampleUser = {
