@@ -15,11 +15,15 @@ exports.sampleUser = {
             valid: entity_1.ScheduleValidType.POSIBLE,
             start: getDay(0),
             end: getDay(0),
+            posibleTime: [],
+            imposibleTime: [],
         },
         {
             valid: entity_1.ScheduleValidType.IMPOSIBLE,
             start: getDay(1),
             end: getDay(1),
+            posibleTime: [],
+            imposibleTime: [],
         },
     ],
 };

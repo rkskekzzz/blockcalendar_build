@@ -22,6 +22,16 @@ const schema = new mongoose_1.Schema({
                     },
                     start: { type: String, required: true },
                     end: { type: String, required: true },
+                    posibleTime: {
+                        type: [Number],
+                        required: true,
+                        default: [],
+                    },
+                    imposibleTime: {
+                        type: [Number],
+                        required: true,
+                        default: [],
+                    },
                 },
             ],
         },
