@@ -36,5 +36,6 @@ const schema = new mongoose_1.Schema({
             ],
         },
     ],
+    meetingDays: { type: [String], required: false, default: [] },
 }, { timestamps: true });
-exports.default = (0, mongoose_1.model)("Calendar", schema);
+exports.default = (0, mongoose_1.model)('Calendar', schema);

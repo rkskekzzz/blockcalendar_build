@@ -26,6 +26,8 @@ function getOneDocument(calendar_id) {
         if (!calendar) {
             throw new error_1.default(404, `Calendar ${calendar_id} not found`);
         }
+        if (!calendar.meetingDays)
+            calendar.meetingDays = [];
         return calendar;
     });
 }
@@ -34,8 +36,23 @@ function getOne(calendar_id) {
         return getOneDocument(calendar_id);
     });
 }
+function updateMeetingDays(calendar_id, meetingDay) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const calendar = yield model_1.default.findById(calendar_id);
+        if (!calendar) {
+            throw new error_1.default(404, `Calendar ${calendar_id} not found`);
+        }
+        if (calendar.meetingDays)
+            calendar.meetingDays = [...calendar.meetingDays, meetingDay];
+        else
+            calendar.meetingDays = [meetingDay];
+        calendar.save();
+        return calendar;
+    });
+}
 exports.CalendarService = {
     create,
     getOne,
     getOneDocument,
+    updateMeetingDays,
 };
