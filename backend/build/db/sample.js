@@ -8,8 +8,9 @@ function getDay(offsetFromToday) {
     return day.toISOString();
 }
 exports.sampleUser = {
-    name: "sample",
-    color: "#ff0000",
+    name: 'sample',
+    color: '#ff0000',
+    isSigned: false,
     schedules: [
         {
             valid: entity_1.ScheduleValidType.POSIBLE,

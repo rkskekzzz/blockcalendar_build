@@ -13,6 +13,7 @@ const schema = new mongoose_1.Schema({
         {
             name: { type: String, required: true },
             color: { type: String, required: true },
+            isSigned: { type: Boolean, required: false },
             schedules: [
                 {
                     valid: {

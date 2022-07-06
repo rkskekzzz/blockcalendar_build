@@ -6,6 +6,7 @@ class CreateCalendarDTO {
 exports.CreateCalendarDTO = CreateCalendarDTO;
 class CreateUserDTO {
     constructor() {
+        this.isSigned = false;
         this.schedules = [];
     }
 }
