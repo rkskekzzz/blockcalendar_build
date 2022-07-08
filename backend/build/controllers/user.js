@@ -21,6 +21,14 @@ function create(req, res) {
         return res.status(200).json(newUser);
     });
 }
+function update(req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const calendar_id = req.params.calendar_id;
+        const updateuserDto = req.body;
+        yield services_1.UserService.update(calendar_id, updateuserDto);
+        return res.sendStatus(200);
+    });
+}
 function remove(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const calendar_id = req.params.calendar_id;
@@ -31,5 +39,6 @@ function remove(req, res) {
 }
 exports.UserController = {
     create,
+    update,
     remove,
 };

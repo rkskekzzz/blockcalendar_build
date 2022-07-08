@@ -22,6 +22,21 @@ function create(calendar_id, createUserDTO) {
         return calendar.save();
     });
 }
+function update(calendar_id, updateUserDto) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const calendar = yield calendar_1.CalendarService.getOneDocument(calendar_id);
+        const newUsers = calendar.users.map((user) => {
+            var _a;
+            if (((_a = user._id) === null || _a === void 0 ? void 0 : _a.toString()) === updateUserDto._id) {
+                user.name = updateUserDto.name;
+                user.color = updateUserDto.color;
+            }
+            return user;
+        });
+        calendar.users = [...newUsers];
+        return calendar.save();
+    });
+}
 function findIndexOrFail(calendar, user_id) {
     const index = calendar.users.findIndex((user) => {
         const parseId = JSON.stringify(user._id).replace(/"/g, '');
@@ -42,6 +57,7 @@ function remove(calendar_id, user_id) {
 }
 exports.UserService = {
     create,
+    update,
     findIndexOrFail,
     remove,
 };

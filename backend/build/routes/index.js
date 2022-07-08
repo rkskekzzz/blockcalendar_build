@@ -9,6 +9,7 @@ router.get('/:calendar_id', controllers_1.CalendarController.getOne);
 router.put('/:calendar_id', controllers_1.CalendarController.updateMeetingDays);
 // 🙍‍♂️ 유저 라우터
 router.post('/:calendar_id/users', controllers_1.UserController.create);
+router.put('/:calendar_id/users', controllers_1.UserController.update);
 router.delete('/:calendar_id/users/:user_id', controllers_1.UserController.remove);
 // 🎏 스케쥴 라우터
 router.post('/:calendar_id/users/:user_id/schedule', controllers_1.ScheduleController.update);
