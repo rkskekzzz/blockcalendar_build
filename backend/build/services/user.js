@@ -18,6 +18,11 @@ const calendar_1 = require("./calendar");
 function create(calendar_id, createUserDTO) {
     return __awaiter(this, void 0, void 0, function* () {
         const calendar = yield calendar_1.CalendarService.getOneDocument(calendar_id);
+        calendar.users.forEach((user) => {
+            if (user.name === createUserDTO.name) {
+                throw new error_1.default(400, `User ${createUserDTO.name} already exists`);
+            }
+        });
         calendar.users.push(createUserDTO);
         return calendar.save();
     });
