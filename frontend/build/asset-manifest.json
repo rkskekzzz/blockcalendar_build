@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/static/css/main.95185c78.css",
-    "main.js": "/static/js/main.eeb403a3.js",
+    "main.js": "/static/js/main.e2c7d562.js",
     "static/media/btn_google_light_normal_ios.svg": "/static/media/btn_google_light_normal_ios.85557fe92b8da82c63a0f6e13e615266.svg",
     "index.html": "/index.html",
     "main.95185c78.css.map": "/static/css/main.95185c78.css.map",
-    "main.eeb403a3.js.map": "/static/js/main.eeb403a3.js.map"
+    "main.e2c7d562.js.map": "/static/js/main.e2c7d562.js.map"
   },
   "entrypoints": [
     "static/css/main.95185c78.css",
-    "static/js/main.eeb403a3.js"
+    "static/js/main.e2c7d562.js"
   ]
 }
