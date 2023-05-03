@@ -30,11 +30,14 @@ const routes_1 = __importDefault(require("./routes"));
 const error = __importStar(require("./modules/error"));
 const connent_1 = require("./db/connent");
 const app = (0, express_1.default)();
+let corsOptions = {
+    origin: true,
+};
 app.use(express_1.default.json());
-app.use((0, cors_1.default)());
-app.use((0, morgan_1.default)("dev"));
+app.use((0, cors_1.default)(corsOptions));
+app.use((0, morgan_1.default)('dev'));
 app.use(express_1.default.urlencoded({ extended: false }));
-app.use("/calendar", routes_1.default);
+app.use('/calendar', routes_1.default);
 app.use(error.errorPageNotFound);
 app.use(error.errorHandler);
 (0, connent_1.mongooseConnect)().then(() => {
